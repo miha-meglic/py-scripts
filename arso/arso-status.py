@@ -42,10 +42,10 @@ for station in stations:
 	data['id'].append(station.find('domain_meteosiId').text)
 	data['name'].append(station.find('domain_longTitle').text)
 	data['time'].append(time.isoformat())
-	data['temperature'].append(float(station.find('t').text))
-	data['humidity'].append(int(station.find('rh').text))
+	data['temperature'].append(float(station.find('t').text) if station.find('t').text else None)
+	data['humidity'].append(int(station.find('rh').text) if station.find('rh').text else None)
 	data['pressure'].append(pressure)
-	data['dew_point'].append(float(station.find('td').text))
+	data['dew_point'].append(float(station.find('td').text) if station.find('td').text else None)
 	data['wind_speed'].append(wind_speed)
 
 # Initialize pandas dataframe
